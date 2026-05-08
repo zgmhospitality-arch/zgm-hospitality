@@ -55,14 +55,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:al
 nav.scrolled{background:rgba(254,253,251,.97);backdrop-filter:blur(20px);padding:11px 0;box-shadow:0 1px 0 rgba(0,0,0,.06)}
 nav .container{display:flex;justify-content:space-between;align-items:center}
 .nav-logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:0}
-.nav-logo-main{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--grey-900);letter-spacing:.1em;font-weight:500}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);letter-spacing:.1em;font-weight:500;transition:color .4s}
+nav.scrolled .nav-logo-main{color:var(--grey-900)}
 .nav-logo-line{width:32px;height:1.5px;background:var(--gold);margin:3px 0 2px}
 .nav-logo-sub{font-size:.5rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:500}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-btn{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;padding:4px 8px;border:1px solid var(--grey-300);transition:all .3s;background:none;font-family:'Libre Franklin',sans-serif}
 .lang-btn:hover,.lang-btn.on{color:var(--grey-800);border-color:var(--gold)}
-.nav-cta{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-800);text-decoration:none;padding:8px 20px;border:1.5px solid var(--gold);transition:all .3s;font-weight:600}
-.nav-cta:hover{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.nav-cta{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-900);text-decoration:none;padding:9px 22px;background:linear-gradient(135deg,var(--gold),var(--gold-light));transition:all .3s;font-weight:700;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(184,146,74,.3)}
+nav.scrolled .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--grey-900)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:#EDE8DF;position:relative}
@@ -377,13 +379,13 @@ footer a{color:var(--gold);text-decoration:none}
   <div class="auth-grid auth-grid--3" data-lang="nl">
     <div class="auth-item"><div class="auth-ico">&#9878;</div><div><strong>Front & Back of House</strong><span>Praktijkdeskundige op iedere afdeling — van keuken tot kassa, van vloer tot directie</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9733;</div><div><strong>Operatie + Strategie + Online</strong><span>Niet alleen draaien, maar ook bouwen. Branding, marketing en conversie inbegrepen</span></div></div>
-    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationaal inzetbaar</strong><span>Overal waar ambitie is</span></div></div>
+    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationaal inzetbaar</strong><span>Nederland · Spanje · seizoenszaken · resorts · horecaformules</span></div></div>
   </div>
   <div class="auth-grid" data-lang="en">
     <div class="auth-item"><div class="auth-ico">&#9878;</div><div><strong>Floor to boardroom</strong><span>Operational + commercial</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9733;</div><div><strong>Built & sold own ventures</strong><span>Entrepreneur, not a theorist</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9741;</div><div><strong>Operations + online</strong><span>Branding, marketing, conversion</span></div></div>
-    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationally available</strong><span>Wherever the ambition is</span></div></div>
+    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationally available</strong><span>Netherlands · Spain · seasonal venues · resorts · hospitality groups</span></div></div>
   </div>
 </div>
 </section>
@@ -666,6 +668,7 @@ footer a{color:var(--gold);text-decoration:none}
         <p><strong>Resultaat:</strong> Directe omzet via eigen kanalen met 310% gestegen.</p>
       </div>
     </div>
+    <p class="reveal" style="text-align:center;font-size:.68rem;color:var(--grey-500);margin-top:24px;font-style:italic;letter-spacing:.04em">Cases geanonimiseerd wegens vertrouwelijkheid.</p>
   </div>
   <div data-lang="en">
     <div class="sh reveal"><h2>Results from practice</h2><div class="gl gl--c"></div><p>No promises. Numbers.</p></div>
@@ -711,6 +714,7 @@ footer a{color:var(--gold);text-decoration:none}
         <p><strong>Result:</strong> Direct revenue via own channels increased by 310%.</p>
       </div>
     </div>
+    <p class="reveal" style="text-align:center;font-size:.68rem;color:var(--grey-500);margin-top:24px;font-style:italic;letter-spacing:.04em">Cases anonymized for confidentiality.</p>
   </div>
 </div>
 </section>
@@ -731,7 +735,7 @@ footer a{color:var(--gold);text-decoration:none}
         <div class="over-avail">
           <h4>Beschikbaarheid</h4>
           <p>Internationaal inzetbaar.</p>
-          <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Plan een gesprek</a>
+          <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Laat mijn zaak screenen</a>
         </div>
       </div>
       <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
@@ -750,7 +754,7 @@ footer a{color:var(--gold);text-decoration:none}
         <div class="over-avail">
           <h4>Availability</h4>
           <p>Internationally available.</p>
-          <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Book a conversation</a>
+          <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Get my venue screened</a>
         </div>
       </div>
       <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
@@ -880,7 +884,7 @@ footer a{color:var(--gold);text-decoration:none}
 </div>
 </section>
 
-<footer><p>&copy; 2026 Zo Goed Mogelijk Hospitality &middot; <a href="mailto:stefan@zogoedmogelijk.nl">stefan@zogoedmogelijk.nl</a></p></footer>
+<footer><p>&copy; 2026 Zo Goed Mogelijk Hospitality &middot; <a href="mailto:info@zgmhospitality.com">info@zgmhospitality.com</a></p></footer>
 
 <script>
 const nav=document.getElementById('nav');
@@ -910,11 +914,11 @@ function sendReport(){
   const score=document.getElementById('qS').textContent;
   const subj=encodeURIComponent((en?'Quick Scan Report — Score ':'Quickscan Rapport — Score ')+score);
   const body=encodeURIComponent((en?'Please send my full quick scan report to: ':'Stuur mijn volledige quickscan rapport naar: ')+email+'\n\n'+(en?'Score: ':'Score: ')+score+'/18');
-  window.location.href='mailto:stefan@zogoedmogelijk.nl?subject='+subj+'&body='+body;
+  window.location.href='mailto:info@zgmhospitality.com?subject='+subj+'&body='+body;
   const box=emailEl.closest('.qres-box');
   if(box)box.innerHTML='<p style="text-align:center;color:var(--gold);font-weight:600;padding:12px 0">'+(en?'✓ Your email client will open now':'✓ Je e-mailclient opent nu')+'</p>';
 }
-function send(){const en=lang==='en',s=en?'e':'';const n=document.getElementById('fN'+s)?.value,b=document.getElementById('fB'+s)?.value,e=document.getElementById('fE'+s)?.value,t=document.getElementById('fT'+s)?.value,ty=document.getElementById('fTy'+s)?.value,o=document.getElementById('fO'+s)?.value,u=document.getElementById('fU'+s)?.value,p=document.getElementById('fP'+s)?.value;if(!n||!e||!ty){alert(en?'Please fill in name, email and type.':'Vul naam, e-mail en type in.');return}const subj=encodeURIComponent('Intake — '+b);const body=encodeURIComponent((en?'Name: ':'Naam: ')+n+'\n'+(en?'Business: ':'Bedrijf: ')+b+'\nEmail: '+e+'\nTel: '+t+'\nType: '+ty+'\n'+(en?'Revenue: ':'Omzet: ')+o+'\n'+(en?'Challenge: ':'Uitdaging: ')+u+'\n'+(en?'Timeline: ':'Periode: ')+p);window.location.href='mailto:stefan@zogoedmogelijk.nl?subject='+subj+'&body='+body}
+function send(){const en=lang==='en',s=en?'e':'';const n=document.getElementById('fN'+s)?.value,b=document.getElementById('fB'+s)?.value,e=document.getElementById('fE'+s)?.value,t=document.getElementById('fT'+s)?.value,ty=document.getElementById('fTy'+s)?.value,o=document.getElementById('fO'+s)?.value,u=document.getElementById('fU'+s)?.value,p=document.getElementById('fP'+s)?.value;if(!n||!e||!ty){alert(en?'Please fill in name, email and type.':'Vul naam, e-mail en type in.');return}const subj=encodeURIComponent('Intake — '+b);const body=encodeURIComponent((en?'Name: ':'Naam: ')+n+'\n'+(en?'Business: ':'Bedrijf: ')+b+'\nEmail: '+e+'\nTel: '+t+'\nType: '+ty+'\n'+(en?'Revenue: ':'Omzet: ')+o+'\n'+(en?'Challenge: ':'Uitdaging: ')+u+'\n'+(en?'Timeline: ':'Periode: ')+p);window.location.href='mailto:info@zgmhospitality.com?subject='+subj+'&body='+body}
 
 // Scroll spy for nav links
 const spySections = document.querySelectorAll('section[id]');
