@@ -51,7 +51,7 @@ section{position:relative;overflow:hidden}
 .sh p{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--text-light);max-width:540px;margin:8px auto 0;line-height:1.6}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s;background:transparent}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s;background:linear-gradient(180deg,rgba(15,26,46,.85) 0%,rgba(15,26,46,.4) 70%,transparent 100%)}
 nav.scrolled{background:rgba(254,253,251,.97);backdrop-filter:blur(20px);padding:11px 0;box-shadow:0 1px 0 rgba(0,0,0,.06)}
 nav .container{display:flex;justify-content:space-between;align-items:center}
 .nav-logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:0}
@@ -193,11 +193,13 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .results-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 @media(max-width:1100px){.results-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){.results-grid{grid-template-columns:1fr}}
-.result-card{padding:20px 16px;background:rgba(255,255,255,.05);border-top:2px solid var(--gold);text-align:center;transition:all .3s}
+.result-tag{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-pale);margin-bottom:12px;font-weight:400;font-style:italic}
+.result-card{padding:24px 18px;background:rgba(255,255,255,.05);border-top:2px solid var(--gold);text-align:left;transition:all .3s}
 .result-card:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
-.result-num{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,1.8vw,1.6rem);color:var(--gold);font-weight:700;line-height:1.1;margin-bottom:4px}
-.result-label{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-400);margin-bottom:10px;font-weight:500}
-.result-card p{font-size:.7rem;color:var(--grey-400);line-height:1.5}
+.result-num{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2vw,1.7rem);color:var(--gold);font-weight:700;line-height:1.1;margin-bottom:4px;text-align:center}
+.result-label{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-400);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:500;text-align:center}
+.result-card p{font-size:.68rem;color:var(--grey-400);line-height:1.5;margin-bottom:4px}
+.result-card p strong{color:var(--grey-300);font-weight:600}
 
 /* APPROACH */
 .ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
@@ -375,13 +377,13 @@ footer a{color:var(--gold);text-decoration:none}
   <div class="auth-grid auth-grid--3" data-lang="nl">
     <div class="auth-item"><div class="auth-ico">&#9878;</div><div><strong>Front & Back of House</strong><span>Praktijkdeskundige op iedere afdeling — van keuken tot kassa, van vloer tot directie</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9733;</div><div><strong>Operatie + Strategie + Online</strong><span>Niet alleen draaien, maar ook bouwen. Branding, marketing en conversie inbegrepen</span></div></div>
-    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationaal inzetbaar</strong><span>Actief in NL · BE · DE · ES met connecties in PT · IT</span></div></div>
+    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationaal inzetbaar</strong><span>Overal waar ambitie is</span></div></div>
   </div>
   <div class="auth-grid" data-lang="en">
     <div class="auth-item"><div class="auth-ico">&#9878;</div><div><strong>Floor to boardroom</strong><span>Operational + commercial</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9733;</div><div><strong>Built & sold own ventures</strong><span>Entrepreneur, not a theorist</span></div></div>
     <div class="auth-item"><div class="auth-ico">&#9741;</div><div><strong>Operations + online</strong><span>Branding, marketing, conversion</span></div></div>
-    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationally active</strong><span>NL · BE · DE · ES</span></div></div>
+    <div class="auth-item"><div class="auth-ico">&#9670;</div><div><strong>Internationally active</strong><span>Available wherever the ambition is</span></div></div>
   </div>
 </div>
 </section>
@@ -569,18 +571,18 @@ footer a{color:var(--gold);text-decoration:none}
   <div data-lang="nl">
     <div class="sh reveal"><h2>Hoe het werkt</h2><div class="gl gl--c"></div></div>
     <div class="ap-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="ap reveal"><div class="num">I</div><h3>Scan</h3><p>Waar verdwijnt het geld? Kerncijfers, inkoop, bezetting, marges, team en online. Alles op tafel in een halve dag.</p></div>
-      <div class="ap reveal"><div class="num">II</div><h3>Plan</h3><p>Concrete verbeterpunten met financiële doorrekening. Geen vaag advies. Een roadmap met prioriteiten en KPI's.</p></div>
-      <div class="ap reveal"><div class="num">III</div><h3>Resultaat</h3><p>Wij voeren uit. Operationeel, commercieel en online. Van training tot inkoop tot branding. Tot het draait.</p></div>
+      <div class="ap reveal"><div class="num">I</div><h3>Quickscan Diagnose</h3><p>Voor ondernemers die willen weten waar geld en rust verdwijnen. Binnen een halve dag alles op tafel: cijfers, inkoop, team, online.</p></div>
+      <div class="ap reveal"><div class="num">II</div><h3>Operationele Winstscan</h3><p>Inkoop, personeelsplanning, menu, bezetting, processen, marge. Concrete verbeterpunten met financiële doorrekening en roadmap.</p></div>
+      <div class="ap reveal"><div class="num">III</div><h3>Interim & Groei</h3><p>Meedraaien, team trainen, online meekijken, structuur bouwen. Wij voeren uit tot het draait.</p></div>
     </div>
     
   </div>
   <div data-lang="en">
     <div class="sh reveal"><h2>How it works</h2><div class="gl gl--c"></div></div>
     <div class="ap-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="ap reveal"><div class="num">I</div><h3>Scan</h3><p>Where is the money going? Key figures, procurement, occupancy, team and online. Everything on the table in half a day.</p></div>
-      <div class="ap reveal"><div class="num">II</div><h3>Plan</h3><p>Concrete improvement points with financial projections. No vague advice. A roadmap with priorities and KPIs.</p></div>
-      <div class="ap reveal"><div class="num">III</div><h3>Result</h3><p>We execute. Operationally, commercially and online. From training to procurement to branding. Until it runs.</p></div>
+      <div class="ap reveal"><div class="num">I</div><h3>Quick Scan Diagnosis</h3><p>For entrepreneurs who want to know where money and peace of mind are disappearing. Everything on the table within half a day.</p></div>
+      <div class="ap reveal"><div class="num">II</div><h3>Operational Profit Scan</h3><p>Procurement, staffing, menu, occupancy, processes, margin. Concrete improvements with financial projections and roadmap.</p></div>
+      <div class="ap reveal"><div class="num">III</div><h3>Interim & Growth</h3><p>Hands-on operations, team training, online monitoring, building structure. We execute until it runs.</p></div>
     </div>
     
   </div>
@@ -622,60 +624,91 @@ footer a{color:var(--gold);text-decoration:none}
 <div class="container">
   <div data-lang="nl">
     <div class="sh reveal"><h2>Resultaten uit de praktijk</h2><div class="gl gl--c"></div><p>Geen beloftes. Cijfers.</p></div>
-    <div class="results-grid results-grid--5">
+    <div class="results-grid">
       <div class="result-card reveal">
+        <div class="result-tag">Strandzaak · Zeeland</div>
         <div class="result-num">38% → 29%</div>
         <div class="result-label">Foodcost</div>
-        <p>Strandzaak aan de kust. Menukaart doorgerekend, leveranciers heronderhandeld, portiecontrole ingevoerd. Binnen 6 weken structureel 9 procentpunt lager.</p>
+        <p><strong>Probleem:</strong> Hoge foodcost ondanks volle terrassen.</p>
+        <p><strong>Aanpak:</strong> Menukaart doorgerekend, leveranciers heronderhandeld, portiecontrole ingevoerd.</p>
+        <p><strong>Resultaat:</strong> Structureel 9 procentpunt lager binnen 6 weken.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Vakantiepark · Meerdere locaties</div>
         <div class="result-num">€180K</div>
         <div class="result-label">Bespaard per jaar</div>
-        <p>Vakantiepark met meerdere complexen. Arbeidscontracten geoptimaliseerd, personeelsstructuur geherorganiseerd, inkoopdeals heronderhandeld. Structurele besparing.</p>
+        <p><strong>Probleem:</strong> Stijgende kosten, krimpende marges over meerdere complexen.</p>
+        <p><strong>Aanpak:</strong> Arbeidscontracten geoptimaliseerd, personeelsstructuur geherorganiseerd, inkoopdeals heronderhandeld.</p>
+        <p><strong>Resultaat:</strong> Structurele jaarlijkse besparing van €180.000.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Restaurantketen · 4 vestigingen</div>
         <div class="result-num">+23%</div>
-        <div class="result-label">Winstmarge</div>
-        <p>Restaurantketen, meerdere locaties. Operationeel geherstructureerd, inkoop gecentraliseerd, menu geoptimaliseerd. Structureel hogere nettomarge binnen 3 maanden.</p>
-      <div class="result-card reveal">
-        <div class="result-num">&lt; 12 mnd</div>
-        <div class="result-label">Break-even startup</div>
-        <p>Horecaconcept van nul opgezet. Binnen een jaar boven break-even door scherpe positionering, strakke koststructuur en gerichte marketing.</p>
+        <div class="result-label">Netto winstmarge</div>
+        <p><strong>Probleem:</strong> Omzet groeide, winst niet. Geen uniformiteit tussen locaties.</p>
+        <p><strong>Aanpak:</strong> Operatie geherstructureerd, inkoop gecentraliseerd, menu geoptimaliseerd per locatie.</p>
+        <p><strong>Resultaat:</strong> Structureel hogere nettomarge binnen 3 maanden.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Startup · Conceptzaak</div>
+        <div class="result-num">&lt; 12 mnd</div>
+        <div class="result-label">Break-even</div>
+        <p><strong>Probleem:</strong> Nieuw concept, geen track record, hoge opstartkosten.</p>
+        <p><strong>Aanpak:</strong> Scherpe positionering, strakke koststructuur, gerichte marketing vanaf dag 1.</p>
+        <p><strong>Resultaat:</strong> Binnen een jaar boven break-even.</p>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-tag">Restaurant · Stad</div>
         <div class="result-num">+310%</div>
-        <div class="result-label">Omzetgroei via online</div>
-        <p>Door online zichtbaarheid structureel op te bouwen steeg de directe omzet via eigen kanalen. Minder afhankelijk van platforms, meer grip op marges.</p>
+        <div class="result-label">Omzet via eigen kanalen</div>
+        <p><strong>Probleem:</strong> Afhankelijk van platforms, geen eigen online zichtbaarheid.</p>
+        <p><strong>Aanpak:</strong> Website, social media en lokale SEO structureel opgebouwd.</p>
+        <p><strong>Resultaat:</strong> Directe omzet via eigen kanalen met 310% gestegen.</p>
       </div>
     </div>
   </div>
   <div data-lang="en">
     <div class="sh reveal"><h2>Results from practice</h2><div class="gl gl--c"></div><p>No promises. Numbers.</p></div>
-    <div class="results-grid results-grid--5">
+    <div class="results-grid">
       <div class="result-card reveal">
+        <div class="result-tag">Beach venue · Coast</div>
         <div class="result-num">38% → 29%</div>
         <div class="result-label">Food cost</div>
-        <p>Coastal beach venue. Menu costed, suppliers renegotiated, portion control implemented. Structurally 9 percentage points lower within 6 weeks.</p>
+        <p><strong>Problem:</strong> High food cost despite full terraces.</p>
+        <p><strong>Approach:</strong> Menu costed, suppliers renegotiated, portion control implemented.</p>
+        <p><strong>Result:</strong> Structurally 9 percentage points lower within 6 weeks.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Holiday park · Multiple locations</div>
         <div class="result-num">€180K</div>
         <div class="result-label">Saved annually</div>
-        <p>Holiday park with multiple complexes. Employment contracts optimized, staff structure reorganized, procurement renegotiated. Structural savings.</p>
+        <p><strong>Problem:</strong> Rising costs, shrinking margins across multiple complexes.</p>
+        <p><strong>Approach:</strong> Employment contracts optimized, staff restructured, procurement renegotiated.</p>
+        <p><strong>Result:</strong> Structural annual savings of €180,000.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Restaurant chain · 4 locations</div>
         <div class="result-num">+23%</div>
-        <div class="result-label">Profit margin</div>
-        <p>Restaurant chain, multiple locations. Operations restructured, procurement centralized, menu optimized. Structurally higher net margin within 3 months.</p>
+        <div class="result-label">Net profit margin</div>
+        <p><strong>Problem:</strong> Revenue grew, profit didn't. No uniformity across locations.</p>
+        <p><strong>Approach:</strong> Operations restructured, procurement centralized, menu optimized per location.</p>
+        <p><strong>Result:</strong> Structurally higher net margin within 3 months.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Startup · Concept venue</div>
         <div class="result-num">&lt; 12 mo</div>
-        <div class="result-label">Startup break-even</div>
-        <p>Hospitality concept built from zero. Above break-even within a year through sharp positioning, tight cost structure and targeted marketing.</p>
+        <div class="result-label">Break-even</div>
+        <p><strong>Problem:</strong> New concept, no track record, high startup costs.</p>
+        <p><strong>Approach:</strong> Sharp positioning, tight cost structure, targeted marketing from day 1.</p>
+        <p><strong>Result:</strong> Above break-even within one year.</p>
       </div>
       <div class="result-card reveal">
+        <div class="result-tag">Restaurant · City</div>
         <div class="result-num">+310%</div>
-        <div class="result-label">Revenue growth via online</div>
-        <p>By structurally building online visibility, direct revenue through owned channels increased. Less platform-dependent, more margin control.</p>
+        <div class="result-label">Revenue via own channels</div>
+        <p><strong>Problem:</strong> Dependent on platforms, no own online visibility.</p>
+        <p><strong>Approach:</strong> Website, social media and local SEO structurally built.</p>
+        <p><strong>Result:</strong> Direct revenue via own channels increased by 310%.</p>
       </div>
     </div>
   </div>
@@ -700,7 +733,7 @@ footer a{color:var(--gold);text-decoration:none}
           <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Plan een gesprek</a>
         </div>
       </div>
-      <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
+      <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
     </div>
   </div>
   <div data-lang="en">
@@ -718,7 +751,7 @@ footer a{color:var(--gold);text-decoration:none}
           <a href="#contact" class="btn btn--gold" style="margin-top:12px;padding:12px 32px;font-size:.65rem">Book a conversation</a>
         </div>
       </div>
-      <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
+      <div class="over-img reveal"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" alt="" style="filter:grayscale(.3) contrast(1.05)"></div>
     </div>
   </div>
 </div>
