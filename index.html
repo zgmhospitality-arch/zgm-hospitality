@@ -312,6 +312,7 @@ footer a{color:var(--gold);text-decoration:none}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat houdt de gratis Quick Scan in?","acceptedAnswer":{"@type":"Answer","text":"De gratis Quick Scan is een online tool met 6 vragen over je operatie. Je krijgt direct een score en een indicatie van je omzetverlies."}},{"@type":"Question","name":"Wat kost het?","acceptedAnswer":{"@type":"Answer","text":"De Quick Scan is gratis. Het Persoonlijk Resultatenrapport kost 97 euro. De Volledige Audit op Locatie start vanaf 750 euro excl. BTW."}},{"@type":"Question","name":"Hoe snel kan een traject starten?","acceptedAnswer":{"@type":"Answer","text":"De gratis Quick Scan doe je direct online. Het Persoonlijk Resultatenrapport wordt binnen 5 werkdagen geleverd. Een Volledige Audit op Locatie kan meestal binnen 1-2 weken ingepland worden."}}]}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -966,7 +967,7 @@ footer a{color:var(--gold);text-decoration:none}
   <div data-lang="nl">
     <div class="sh reveal"><h2>Intake</h2><div class="gl gl--c"></div><p>Vul het formulier in zodat wij volledig voorbereid het gesprek in kunnen gaan.</p></div>
     <div class="intake reveal">
-      <div class="intake-row"><div class="intake-f"><label>Naam</label><input type="text" placeholder="Je naam" id="fN"></div><div class="intake-f"><label>Bedrijf</label><input type="text" placeholder="Naam van je zaak" id="fB"></div></div>
+      <div class="intake-row"><div class="intake-f"><label>Naam</label><input type="text" placeholder="Je naam" name="naam" required id="fN"></div><div class="intake-f"><label>Bedrijf</label><input type="text" placeholder="Naam van je zaak" id="fB"></div></div>
       <div class="intake-row"><div class="intake-f"><label>E-mail</label><input type="email" placeholder="" id="fE"></div><div class="intake-f"><label>Telefoon</label><input type="tel" placeholder="+31 6 ..." id="fT"></div></div>
       <div class="intake-row"><div class="intake-f"><label>Type horeca</label><select id="fTy"><option value="">Selecteer...</option><option>Restaurant</option><option>Beachclub / Strandzaak</option><option>Hotel / Resort</option><option>Café / Bar / Nacht</option><option>Vakantiepark</option><option>Festival / Event</option><option>Franchise</option><option>Anders</option></select></div><div class="intake-f"><label>Omzet (indicatie)</label><select id="fO"><option value="">Selecteer...</option><option>&lt; €500K</option><option>€500K - €1M</option><option>€1M - €2.5M</option><option>€2.5M+</option><option>Bespreek ik liever</option></select></div></div>
       <div class="intake-f full"><label>Grootste uitdaging</label><textarea rows="3" placeholder="Waar loop je tegenaan?" id="fU"></textarea></div>
@@ -991,7 +992,7 @@ footer a{color:var(--gold);text-decoration:none}
   <div data-lang="en">
     <div class="sh reveal"><h2>Intake</h2><div class="gl gl--c"></div><p>Fill in the form so we can come fully prepared to the conversation.</p></div>
     <div class="intake reveal">
-      <div class="intake-row"><div class="intake-f"><label>Name</label><input type="text" placeholder="Your name" id="fNe"></div><div class="intake-f"><label>Business</label><input type="text" placeholder="Venue name" id="fBe"></div></div>
+      <div class="intake-row"><div class="intake-f"><label>Name</label><input type="text" placeholder="Your name" name="naam" required id="fNe"></div><div class="intake-f"><label>Business</label><input type="text" placeholder="Venue name" id="fBe"></div></div>
       <div class="intake-row"><div class="intake-f"><label>Email</label><input type="email" placeholder="" id="fEe"></div><div class="intake-f"><label>Phone</label><input type="tel" placeholder="+34 / +31" id="fTe"></div></div>
       <div class="intake-row"><div class="intake-f"><label>Type</label><select id="fTye"><option value="">Select...</option><option>Restaurant</option><option>Beach Club</option><option>Hotel / Resort</option><option>Bar / Night</option><option>Holiday Park</option><option>Event</option><option>Franchise</option><option>Other</option></select></div><div class="intake-f"><label>Revenue</label><select id="fOe"><option value="">Select...</option><option>&lt; €500K</option><option>€500K - €1M</option><option>€1M - €2.5M</option><option>€2.5M+</option><option>Prefer to discuss</option></select></div></div>
       <div class="intake-f full"><label>Biggest challenge</label><textarea rows="3" placeholder="What are you facing?" id="fUe"></textarea></div>
@@ -1039,11 +1040,7 @@ function uP(){document.querySelectorAll('.qbar').forEach((b,i)=>b.classList.togg
 function pick(el){const q=el.closest('.qq'),qi=+q.dataset.q,s=+el.dataset.s;q.querySelectorAll('.qo').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');ans[qi]=s;setTimeout(()=>{if(qi<TQ-1){q.classList.remove('on');cQ=qi+1;document.querySelector(`.qq[data-q="${cQ}"]`).classList.add('on');uP()}else showR()},300)}
 function showR(){document.querySelector('.qq.on')?.classList.remove('on');prog.style.display='none';const t=ans.reduce((a,b)=>a+b,0);document.getElementById('qS').textContent=t;const v=document.getElementById('qV'),d=document.getElementById('qD');if(lang==='nl'){if(t>=13){v.textContent='Er ligt serieus geld op tafel.';d.textContent='Meerdere vlakken hebben ruimte voor directe verbetering. Een Quick Scan maakt concreet hoeveel er te winnen valt.'}else if(t>=7){v.textContent='Duidelijke verbeterkansen.';d.textContent='De basis staat, maar er zitten blinde vlekken. Een frisse blik legt bloot wat je zelf niet meer ziet.'}else{v.textContent='Goed georganiseerd. Maar er is altijd ruimte.';d.textContent='De winst zit in fijnafstemming — kleine percentages die bij jouw omzet significant doorwerken.'}}else{if(t>=13){v.textContent='Serious money on the table.';d.textContent='Multiple areas have room for immediate improvement. A Quick Scan makes concrete how much there is to gain.'}else if(t>=7){v.textContent='Clear opportunities.';d.textContent='Foundation is solid, but there are blind spots. A fresh perspective reveals what you can no longer see.'}else{v.textContent='Well organized. But there\'s always room.';d.textContent='Gains are in fine-tuning — small percentages that at your revenue level make a real difference.'}}document.getElementById('qR').classList.add('on');showTeasers()}
 
-function sendReport(){
-  const en=lang==='en';
-  const emailEl=document.getElementById(en?'qEmailEn':'qEmail');
-  const email=emailEl?.value;
-  if(!email||!email.includes('@')){alert(en?'Please enter a valid email.':'Vul een geldig e-mailadres in.');return}
+
   const score=document.getElementById('qS').textContent;
   const subj=encodeURIComponent((en?'Quick Scan Report — Score ':'Quick Scan Rapport — Score ')+score);
   const body=encodeURIComponent((en?'Please send my full quick scan report to: ':'Stuur mijn volledige Quick Scan rapport naar: ')+email+'\n\n'+(en?'Score: ':'Score: ')+score+'/18');
@@ -1105,6 +1102,96 @@ function calcROI(){
   } else {
     document.getElementById('roiAmountNl').textContent='\u20ac'+formatted;
     document.getElementById('roiEmailBoxNl').style.display='block';
+  }
+}
+
+
+// SUPABASE INIT
+const SUPABASE_URL='https://jillivjdacvfmscnyebe.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppbGxpdmpkYWN2Zm1zY255ZWJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0NjQzNjMsImV4cCI6MjA5NDA0MDM2M30.TjKsV8NNnSdGla4Abf_4Qkigj6qbqXMrCNUf7fGCtI0';
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+// SEND QUICK SCAN REPORT
+async function sendReport(){
+  const en=lang==='en';
+  const emailEl=document.getElementById(en?'qEmailEn':'qEmail');
+  const email=emailEl.value.trim();
+  if(!email||!email.includes('@')){alert(en?'Please enter a valid email.':'Vul een geldig e-mailadres in.');return}
+  
+  const score=document.getElementById('qS').textContent;
+  const omzet=document.getElementById(en?'roiOmzetEn':'roiOmzet')?.value||'';
+  const food=document.getElementById(en?'roiFoodEn':'roiFood')?.value||'';
+  const staff=document.getElementById(en?'roiStaffEn':'roiStaff')?.value||'';
+  const lekkage=document.getElementById(en?'roiAmountEn':'roiAmountNl')?.textContent||'';
+  
+  // Collect teasers
+  const suffix=en?'En':'Nl';
+  const t1=document.getElementById('teaser1'+suffix)?.textContent||'';
+  const t2=document.getElementById('teaser2'+suffix)?.textContent||'';
+  const t3=document.getElementById('teaser3'+suffix)?.textContent||'';
+  
+  try{
+    const{error}=await supabase.from('Quick Scan').insert({
+      email:email,
+      score:parseInt(score),
+      answers:JSON.stringify(ans),
+      omzet:omzet,
+      foodcost:food,
+      personeel:staff,
+      lekkage:lekkage,
+      teasers:JSON.stringify([t1,t2,t3])
+    });
+    if(error)throw error;
+    
+    emailEl.value='';
+    const btn=emailEl.nextElementSibling;
+    btn.textContent=en?'Sent! Check your inbox.':'Verzonden! Check je inbox.';
+    btn.style.background='var(--navy)';
+    btn.style.color='var(--cream)';
+    btn.disabled=true;
+  }catch(e){
+    console.error('Supabase error:',e);
+    alert(en?'Something went wrong. Please try again.':'Er ging iets mis. Probeer het opnieuw.');
+  }
+}
+
+// SEND INTAKE FORM
+async function sendIntake(){
+  const en=lang==='en';
+  const f=document.getElementById('intakeForm');
+  const data={};
+  const fields=f.querySelectorAll('input,select,textarea');
+  let valid=true;
+  
+  fields.forEach(el=>{
+    if(el.name){
+      data[el.name]=el.value;
+      if(el.required&&!el.value.trim()){valid=false;el.style.borderColor='#C0392B'}
+      else{el.style.borderColor=''}
+    }
+  });
+  
+  if(!valid){alert(en?'Please fill in all required fields.':'Vul alle verplichte velden in.');return}
+  
+  try{
+    const{error}=await supabase.from('Intake Leads').insert({
+      naam:data.naam||'',
+      bedrijf:data.bedrijf||'',
+      email:data.email||'',
+      telefoon:data.telefoon||'',
+      type_horeca:data.type_horeca||'',
+      omzet:data.omzet||'',
+      uitdaging:data.uitdaging||'',
+      timing:data.timing||'',
+      geldverlies:data.geldverlies||'',
+      doel:data.doel||''
+    });
+    if(error)throw error;
+    
+    f.innerHTML='<div style="text-align:center;padding:40px 20px"><h3 style="color:var(--gold);margin-bottom:12px">'+(en?'Thank you!':'Bedankt!')+'</h3><p style="color:var(--cream);font-size:.9rem">'+(en?'We\'ll be in touch within 24 hours.':'We nemen binnen 24 uur contact op.')+'</p></div>';
+  }catch(e){
+    console.error('Supabase error:',e);
+    alert(en?'Something went wrong. Please try again.':'Er ging iets mis. Probeer het opnieuw.');
   }
 }
 
