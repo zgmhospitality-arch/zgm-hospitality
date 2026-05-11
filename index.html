@@ -985,7 +985,7 @@ footer a{color:var(--gold);text-decoration:none}
       </select></div>
       <div class="intake-f full"><label>Upload je scorecard (optioneel)</label><input type="file" id="fFile" accept=".pdf,.png,.jpg" style="padding:11px 13px;background:rgba(255,255,255,.08);border:1.5px solid var(--grey-600);color:var(--grey-100);cursor:pointer;font-size:.84rem;font-family:'Libre Franklin',sans-serif;width:100%"></div>
       <div class="intake-f full"><label>Wat wil je het liefst bereiken in de komende 3 maanden?</label><textarea rows="2" placeholder="Bijv: meer winst, beter team, grip op cijfers, online groeien..." id="fGoal"></textarea></div>
-      <button class="btn btn--gold" style="width:100%;margin-top:8px" onclick="send()">Verstuur intake</button>
+      <button class="btn btn--gold" style="width:100%;margin-top:8px" onclick="sendIntake()">Verstuur intake</button>
       <p class="intake-note">Geen spam. We bellen je persoonlijk.</p>
     </div>
   </div>
@@ -1010,7 +1010,7 @@ footer a{color:var(--gold);text-decoration:none}
       </select></div>
       <div class="intake-f full"><label>Upload your scorecard (optional)</label><input type="file" id="fFileEn" accept=".pdf,.png,.jpg" style="padding:11px 13px;background:rgba(255,255,255,.08);border:1.5px solid var(--grey-600);color:var(--grey-100);cursor:pointer;font-size:.84rem;font-family:'Libre Franklin',sans-serif;width:100%"></div>
       <div class="intake-f full"><label>What do you most want to achieve in the next 3 months?</label><textarea rows="2" placeholder="E.g. more profit, better team, grip on numbers, online growth..." id="fGoalEn"></textarea></div>
-      <button class="btn btn--gold" style="width:100%;margin-top:8px" onclick="send()">Submit intake</button>
+      <button class="btn btn--gold" style="width:100%;margin-top:8px" onclick="sendIntake()">Submit intake</button>
       <p class="intake-note">No spam. We'll call you personally.</p>
     </div>
   </div>
@@ -1149,37 +1149,37 @@ async function sendReport(){
 // SEND INTAKE FORM
 async function sendIntake(){
   const en=lang==='en';
-  const f=document.getElementById('intakeForm');
-  const data={};
-  const fields=f.querySelectorAll('input,select,textarea');
-  let valid=true;
+  const s=en?'e':'';
+  const naam=(document.getElementById('fN'+s)||document.getElementById('fN'))?.value||'';
+  const bedrijf=(document.getElementById('fB'+s)||document.getElementById('fB'))?.value||'';
+  const email=(document.getElementById('fE'+s)||document.getElementById('fE'))?.value||'';
+  const telefoon=(document.getElementById('fT'+s)||document.getElementById('fT'))?.value||'';
+  const type_horeca=(document.getElementById('fTy'+s)||document.getElementById('fTy'))?.value||'';
+  const omzet=(document.getElementById('fO'+s)||document.getElementById('fO'))?.value||'';
+  const uitdaging=(document.getElementById('fU'+s)||document.getElementById('fU'))?.value||'';
+  const timing=(document.getElementById('fP'+s)||document.getElementById('fP'))?.value||'';
+  const geldverlies=(document.getElementById('fWinstlek')||document.getElementById('fWinstleke'))?.value||'';
+  const doel=(document.getElementById('fDoel')||document.getElementById('fDoele'))?.value||'';
   
-  fields.forEach(el=>{
-    if(el.name){
-      data[el.name]=el.value;
-      if(el.required&&!el.value.trim()){valid=false;el.style.borderColor='#C0392B'}
-      else{el.style.borderColor=''}
-    }
-  });
-  
-  if(!valid){alert(en?'Please fill in all required fields.':'Vul alle verplichte velden in.');return}
+  if(!naam||!email){alert(en?'Please fill in at least name and email.':'Vul minimaal naam en e-mail in.');return}
   
   try{
     const{error}=await sbClient.from('Intake Leads').insert({
-      naam:data.naam||'',
-      bedrijf:data.bedrijf||'',
-      email:data.email||'',
-      telefoon:data.telefoon||'',
-      type_horeca:data.type_horeca||'',
-      omzet:data.omzet||'',
-      uitdaging:data.uitdaging||'',
-      timing:data.timing||'',
-      geldverlies:data.geldverlies||'',
-      doel:data.doel||''
+      naam:naam,
+      bedrijf:bedrijf,
+      email:email,
+      telefoon:telefoon,
+      type_horeca:type_horeca,
+      omzet:omzet,
+      uitdaging:uitdaging,
+      timing:timing,
+      geldverlies:geldverlies,
+      doel:doel
     });
     if(error)throw error;
     
-    f.innerHTML='<div style="text-align:center;padding:40px 20px"><h3 style="color:var(--gold);margin-bottom:12px">'+(en?'Thank you!':'Bedankt!')+'</h3><p style="color:var(--cream);font-size:.9rem">'+(en?'We\'ll be in touch within 24 hours.':'We nemen binnen 24 uur contact op.')+'</p></div>';
+    const wrap=document.querySelector('.intake');
+    if(wrap)wrap.innerHTML='<div style="text-align:center;padding:40px 20px"><h3 style="color:var(--gold);margin-bottom:12px">'+(en?'Thank you!':'Bedankt!')+'</h3><p style="color:var(--cream);font-size:.9rem">'+(en?"We will be in touch within 24 hours.":"We nemen binnen 24 uur contact op.")+'</p></div>';
   }catch(e){
     console.error('Supabase error:',e);
     alert(en?'Something went wrong. Please try again.':'Er ging iets mis. Probeer het opnieuw.');
