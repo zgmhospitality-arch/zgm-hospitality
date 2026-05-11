@@ -312,7 +312,7 @@ footer a{color:var(--gold);text-decoration:none}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat houdt de gratis Quick Scan in?","acceptedAnswer":{"@type":"Answer","text":"De gratis Quick Scan is een online tool met 6 vragen over je operatie. Je krijgt direct een score en een indicatie van je omzetverlies."}},{"@type":"Question","name":"Wat kost het?","acceptedAnswer":{"@type":"Answer","text":"De Quick Scan is gratis. Het Persoonlijk Resultatenrapport kost 97 euro. De Volledige Audit op Locatie start vanaf 750 euro excl. BTW."}},{"@type":"Question","name":"Hoe snel kan een traject starten?","acceptedAnswer":{"@type":"Answer","text":"De gratis Quick Scan doe je direct online. Het Persoonlijk Resultatenrapport wordt binnen 5 werkdagen geleverd. Een Volledige Audit op Locatie kan meestal binnen 1-2 weken ingepland worden."}}]}
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -1100,7 +1100,7 @@ function calcROI(){
 // SUPABASE INIT
 const SUPABASE_URL='https://jillivjdacvfmscnyebe.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppbGxpdmpkYWN2Zm1zY255ZWJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0NjQzNjMsImV4cCI6MjA5NDA0MDM2M30.TjKsV8NNnSdGla4Abf_4Qkigj6qbqXMrCNUf7fGCtI0';
-const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const sbClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 // SEND QUICK SCAN REPORT
 async function sendReport(){
@@ -1122,7 +1122,7 @@ async function sendReport(){
   const t3=document.getElementById('teaser3'+suffix)?.textContent||'';
   
   try{
-    const{error}=await supabase.from('Quick Scan').insert({
+    const{error}=await sbClient.from('Quick Scan').insert({
       email:email,
       score:parseInt(score),
       answers:JSON.stringify(ans),
@@ -1165,7 +1165,7 @@ async function sendIntake(){
   if(!valid){alert(en?'Please fill in all required fields.':'Vul alle verplichte velden in.');return}
   
   try{
-    const{error}=await supabase.from('Intake Leads').insert({
+    const{error}=await sbClient.from('Intake Leads').insert({
       naam:data.naam||'',
       bedrijf:data.bedrijf||'',
       email:data.email||'',
